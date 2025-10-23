@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+/* Custom scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom styles for better appearance */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
