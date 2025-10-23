@@ -27,7 +27,7 @@ const handleSubmit = async (e) => {
   setSuccess("");
   setError("");
 
-  const API_URL = import.meta.env.VITE_BACKEND_URL; // dynamic backend URL
+const API_URL = import.meta.env.VITE_BACKEND_URL || "https://backend-portfolio-v6rq.onrender.com";
 
   try {
     const res = await axios.post(`${API_URL}/api/contact/send`, formData);
