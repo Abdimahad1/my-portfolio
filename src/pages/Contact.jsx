@@ -21,22 +21,25 @@ const Contact = () => {
   };
 
   // Handle form submit
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setSuccess("");
-    setError("");
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setLoading(true);
+  setSuccess("");
+  setError("");
 
-    try {
-      const res = await axios.post("http://localhost:5000/api/contact/send", formData);
-      setSuccess(res.data.message);
-      setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
-    } catch (err) {
-      setError(err.response?.data?.message || "Failed to send message");
-    }
+  const API_URL = import.meta.env.VITE_BACKEND_URL; // dynamic backend URL
 
-    setLoading(false);
-  };
+  try {
+    const res = await axios.post(`${API_URL}/api/contact/send`, formData);
+    setSuccess(res.data.message);
+    setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
+  } catch (err) {
+    setError(err.response?.data?.message || "Failed to send message");
+  }
+
+  setLoading(false);
+};
+
 
   return (
     <section id="contact" className="min-h-screen bg-white py-20 px-6 md:px-12">
